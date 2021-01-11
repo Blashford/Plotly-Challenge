@@ -41,8 +41,9 @@ d3.json("data/samples.json").then(data => {
             type: "bar",
             orientation: "h"
         };
+        var config = {responsive: true};
         var ploty = [trace1];
-        Plotly.newPlot("bar", ploty);
+        Plotly.newPlot("bar", ploty, config);
 
         var trace2 = {
             x: samId,
@@ -68,6 +69,30 @@ d3.json("data/samples.json").then(data => {
         for (var y in inputMeta) {
             d3.select("#sample-metadata").append("p").text(`${y}: ${inputMeta[y]}`).attr("class", "text-wrap");
         };
+        var washy = inputMeta.wfreq
+        var trace3 = {
+            domain: {x:[0,1], y:[0,1]},
+            value: washy,
+            title: {text: "Belly Button Washing Frequency"},
+            type: "indicator",
+            mode: "gauge",
+            gauge: {
+                axis: {range: [null, 9]},
+                steps: [
+                    {range: [0,1], color: "#ffffcc"},
+                    {range: [1,2], color: "#ffff99"},
+                    {range: [2,3], color: "#ffff66"},
+                    {range: [3,4], color: "#b3ffb3"},
+                    {range: [4,5], color: "#99ff99"},
+                    {range: [5,6], color: "#80ff80"},
+                    {range: [6,7], color: "#99ff66"},
+                    {range: [7,8], color: "#66ff66"},
+                    {range: [8,9], color: "#33cc33"}
+                ]
+            },
+        }
+        var ploty3 = [trace3]
+        Plotly.newPlot("gauge", ploty3, config)
     };
     updateDash()
 });
