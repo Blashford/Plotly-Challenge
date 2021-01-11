@@ -58,6 +58,16 @@ d3.json("data/samples.json").then(data => {
         var ploty2 = [trace2];
         Plotly.newPlot("bubble", ploty2)
 
-        
-    }
-})
+        var inputMeta = data.metadata.find(x=>{
+            if(parseInt(input) === x.id){
+                return x
+            };
+        });
+        console.log(inputMeta)
+        d3.select("#sample-metadata").text("")
+        for (var y in inputMeta) {
+            d3.select("#sample-metadata").append("p").text(`${y}: ${inputMeta[y]}`).attr("class", "text-wrap");
+        };
+    };
+    updateDash()
+});
