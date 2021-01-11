@@ -1,10 +1,3 @@
-function compareDesc(a,b) {
-    return b-a
-};
-function compareAsc(a,b) {
-    return a-b
-};
-
 d3.json("data/samples.json").then(data => {
     data.names.forEach(id => {
         
