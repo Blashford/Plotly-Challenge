@@ -36,7 +36,11 @@ d3.json("data/samples.json").then(data => {
         };
         var config = {responsive: true};
         var ploty = [trace1];
-        Plotly.newPlot("bar", ploty, config);
+        var layout1 = {
+            xaxis: {title: "Sample Values"},
+            yaxis: {title: "OTU IDs"}
+        }
+        Plotly.newPlot("bar", ploty, layout1, config);
 
         var trace2 = {
             x: samId,
@@ -50,7 +54,10 @@ d3.json("data/samples.json").then(data => {
             }
         };
         var ploty2 = [trace2];
-        Plotly.newPlot("bubble", ploty2)
+        var layout2 = {
+            xaxis: {title: "OTU IDs"}
+        }
+        Plotly.newPlot("bubble", ploty2, layout2)
 
         var inputMeta = data.metadata.find(x=>{
             if(parseInt(input) === x.id){
