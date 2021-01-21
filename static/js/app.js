@@ -16,15 +16,15 @@ d3.json("data/samples.json").then(data => {
         }); 
 
         var samVal = inputData.sample_values
-        var barVal = samVal.slice(0,10);
+        var barVal = samVal.slice(0,10).reverse();
         console.log(barVal);
 
         var samId = inputData.otu_ids
-        var barId = samId.map(i => "OTU " + i).slice(0,10);
+        var barId = samId.map(i => "OTU " + i).slice(0,10).reverse();
         console.log(barId);
 
         var hovText = inputData.otu_labels
-        var barLab = hovText.slice(0,10);
+        var barLab = hovText.slice(0,10).reverse();
         console.log(barLab);
 
         var trace1 = {
